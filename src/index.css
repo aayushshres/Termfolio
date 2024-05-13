@@ -1,14 +1,18 @@
 .App {
-    background-color: green;
     height: 100vh;
-    width: 100vw;
-    position: relative;
+    margin: 0;
+    scrollbar-width: none;
 }
 
 .Terminal {
     padding: 100px;
-    height: 100vh;
-    width: 100vw;
+    background-color: rgb(12,36,18);
+    height: 100%;
+    width: 100%;
+}
+
+.App::-webkit-scrollbar{
+    display: none;
 }
 
 #scan, #bezel {
@@ -21,19 +25,33 @@
 }
 
 #scan {
-    opacity: 40%;
+    opacity: 70%;
 }
 
 #text, #title, input{
     font-family: VT323;
-    font-size: 20px;
-    color: rgb(159, 248, 25);
-    text-shadow: 1px 1px 2px rgb(159, 248, 25), 0 0 1em rgb(159, 248, 25), 0 0 0.2em rgb(159, 248, 25);
+    font-size: 25px;
+    color: rgb(19,224,68);
+    text-shadow: 1px 1px 2px rgb(19,224,68), 0 0 5em rgb(19,224,68), 0 0 0.2em rgb(19,224,68);
+}
+
+#text {
+    flex: 1;
+    display: felx;
+    flex-direction: column-reverse;
+    max-height: 60vh;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 #title {
     font-size: 70px;
     white-space: pre;
+}
+
+#inputfield {
+    width: 68vw;
+    display: inline-block;
 }
 
 input {
@@ -43,7 +61,7 @@ input {
     padding: 0;
     background-color: transparent;
     width: 100%;
-    caret-color: rgb(159, 248, 25);;
+    caret-color: rgb(19,224,68);;
     caret-shape: block;
 }
 

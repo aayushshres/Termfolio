@@ -1,21 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
+import { help } from "../commands";
+import { about } from "../commands";
 
 function Terminal() {
   const [inputValue, setInputValue] = useState("");
-  const [history, setHistory] = useState<string[]>([]);
+  const [history, setHistory] = useState<React.ReactNode[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   const prompt = "[termfolio@aayush]$ ";
-
-  const help = [
-    "clear - Clear the screen",
-    "help - Show this help menu",
-    "... (add more commands here)",
-  ];
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  useEffect(() => {
+    if (textRef.current) {
+      textRef.current.scrollTop = textRef.current.scrollHeight;
+    }
+  }, [history]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -33,8 +36,21 @@ function Terminal() {
             ...help,
           ]);
           break;
+        case "about":
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            `${prompt} ${inputValue}`,
+            ...about,
+          ]);
+          break;
         case "clear":
           setHistory([]);
+          break;
+        case "":
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            `${prompt} ${inputValue}`,
+          ]);
           break;
         default:
           setHistory((prevHistory) => [
@@ -57,14 +73,14 @@ function Terminal() {
         inputRef.current?.focus();
       }}
     >
-      <div id="text">
-        <div id="title">Termfolio</div>
+      <div id="title">Termfolio</div>
+      <div className="textfield" id="text" ref={textRef}>
         {history.map((item, index) => (
           <div key={index}>{item}</div>
         ))}
 
-        <div>
-          <span id="text">{prompt}</span>
+        <span>{prompt}</span>
+        <div id="inputfield">
           <input
             ref={inputRef}
             type="text"
