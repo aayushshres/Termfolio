@@ -1,75 +1,80 @@
 .App {
-    height: 100vh;
-    margin: 0;
-    scrollbar-width: none;
+  height: 100vh;
+  margin: 0;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .Terminal {
-    padding: 100px;
-    background-color: rgb(12,36,18);
-    height: 100%;
-    width: 100%;
+  padding-left: 50px;
+  padding-top: 20px;
+  background-color: rgb(12, 36, 18);
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
-.App::-webkit-scrollbar{
-    display: none;
-}
-
-#scan, #bezel {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
+.Terminal::-webkit-scrollbar {
+  display: none;
 }
 
 #scan {
-    opacity: 70%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 70%;
 }
 
-#text, #title, input{
-    font-family: VT323;
-    font-size: 25px;
-    color: rgb(19,224,68);
-    text-shadow: 1px 1px 2px rgb(19,224,68), 0 0 5em rgb(19,224,68), 0 0 0.2em rgb(19,224,68);
+#text,
+#title,
+#description,
+input {
+  font-family: VT323;
+  font-size: 25px;
+  color: rgb(19, 224, 68);
+  text-shadow: 1px 1px 2px rgb(19, 224, 68), 0 0 5em rgb(19, 224, 68),
+    0 0 0.2em rgb(19, 224, 68);
 }
 
 #text {
-    flex: 1;
-    display: felx;
-    flex-direction: column-reverse;
-    max-height: 60vh;
-    overflow: auto;
-    scrollbar-width: none;
+  flex: 1;
+  display: felx;
+  flex-direction: column-reverse;
+  max-height: 65%;
+  max-width: 95%;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 #title {
-    font-size: 70px;
-    white-space: pre;
+  font-size: 70px;
+  white-space: pre;
 }
 
 #inputfield {
-    width: 68vw;
-    display: inline-block;
+  width: 80%;
+  display: inline-block;
 }
 
 input {
-    border: none;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    width: 100%;
-    caret-color: rgb(19,224,68);;
-    caret-shape: block;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
+  display: inline;
 }
 
 .noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

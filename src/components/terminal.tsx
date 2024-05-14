@@ -44,7 +44,13 @@ function Terminal() {
           ]);
           break;
         case "clear":
+        case "cls":
           setHistory([]);
+          break;
+        case "exit":
+          if (window.confirm("Are you sure you want to exit?")) {
+            window.location.href = "about:blank";
+          }
           break;
         case "":
           setHistory((prevHistory) => [
@@ -57,7 +63,7 @@ function Terminal() {
             ...prevHistory,
             `${prompt} ${inputValue}`,
             `shell: command not found: ${inputValue}`,
-            `shell: enter 'help' to list valid commands`,
+            `shell:  For the list of available commands, type 'help'`,
           ]);
           break;
       }
@@ -74,6 +80,12 @@ function Terminal() {
       }}
     >
       <div id="title">Termfolio</div>
+      <div id="description">
+        <p>Welcome to my interactive web terminal.</p>
+        <p>
+          For the list of available commands, type <b>'help'</b>
+        </p>
+      </div>
       <div className="textfield" id="text" ref={textRef}>
         {history.map((item, index) => (
           <div key={index}>{item}</div>
