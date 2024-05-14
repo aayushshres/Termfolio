@@ -26,18 +26,32 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  opacity: 70%;
+  opacity: 40%;
 }
 
 #text,
 #title,
 #description,
-input {
+#output,
+input,
+a:link,
+a:visited {
   font-family: VT323;
-  font-size: 25px;
+  font-size: 20px;
   color: rgb(19, 224, 68);
   text-shadow: 1px 1px 2px rgb(19, 224, 68), 0 0 5em rgb(19, 224, 68),
     0 0 0.2em rgb(19, 224, 68);
+}
+
+a:link,
+a:visited {
+  color: yellow;
+}
+
+#output {
+  color: yellowgreen;
+  text-shadow: 1px 1px 2px yellowgreen, 0 0 5em yellowgreen,
+    0 0 0.2em yellowgreen;
 }
 
 #text {
@@ -56,7 +70,7 @@ input {
 }
 
 #inputfield {
-  width: 80%;
+  width: 50%;
   display: inline-block;
 }
 

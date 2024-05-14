@@ -1,6 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import { help } from "../commands";
-import { about } from "../commands";
+import {
+  help,
+  aboutme,
+  projects,
+  github,
+  surprise,
+  surpriseLink,
+  githubProfile,
+  invalid,
+} from "../utils/constants";
 
 function Terminal() {
   const [inputValue, setInputValue] = useState("");
@@ -36,12 +44,39 @@ function Terminal() {
             ...help,
           ]);
           break;
-        case "about":
+        case "aboutme":
           setHistory((prevHistory) => [
             ...prevHistory,
             `${prompt} ${inputValue}`,
-            ...about,
+            ...aboutme,
           ]);
+          break;
+        case "projects":
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            `${prompt} ${inputValue}`,
+            ...projects,
+          ]);
+          break;
+        case "github":
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            `${prompt} ${inputValue}`,
+            ...github,
+          ]);
+          setTimeout(() => {
+            window.open(githubProfile, "_blank");
+          }, 1000);
+          break;
+        case "surprise":
+          setHistory((prevHistory) => [
+            ...prevHistory,
+            `${prompt} ${inputValue}`,
+            ...surprise,
+          ]);
+          setTimeout(() => {
+            window.open(surpriseLink, "_blank");
+          }, 500);
           break;
         case "clear":
         case "cls":
@@ -62,8 +97,7 @@ function Terminal() {
           setHistory((prevHistory) => [
             ...prevHistory,
             `${prompt} ${inputValue}`,
-            `shell: command not found: ${inputValue}`,
-            `shell:  For the list of available commands, type 'help'`,
+            ...invalid,
           ]);
           break;
       }
@@ -81,11 +115,11 @@ function Terminal() {
     >
       <div id="title">Termfolio</div>
       <div id="description">
-        <p>Welcome to my interactive web terminal.</p>
-        <p>
-          For the list of available commands, type <b>'help'</b>
-        </p>
+        Welcome to my interactive web terminal.
+        <br />
+        For the list of available commands, type <b>'help'</b>
       </div>
+      <p></p>
       <div className="textfield" id="text" ref={textRef}>
         {history.map((item, index) => (
           <div key={index}>{item}</div>
